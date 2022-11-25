@@ -15,6 +15,7 @@
     div{
         text-align: center;
         margin: 20%;
+        color: aliceblue;
     }
     h1{
         text-align:center;
@@ -30,23 +31,41 @@
 </style>
 </head>
 <body>
-    <h1>LOGIN PAGE</h1>
+    
   <div> 
-    <p> <input type="email" placeholder="Enter your email " id="name" class="input"></p>
-    <p> <input type="password" placeholder="Enter your password" class="input" id="password"></p>
-    <button onclick="a()" >login</button></div>
+    <h1>LOGIN PAGE</h1>
+    <p> <input type="email" placeholder="Enter your email " id="name" class="input" required></p>
+    <p> <input type="password" placeholder="Enter your password" class="input" id="password" required></p>
+    <select id="car" class="input" required >
+        <option>select a car</option>>
+        <option>Ford</option>>
+        <option>BMW</option>
+        <option>Mercedes Benz</option>>
+        <option>Ferrari</option>
+        <option>Lambhorgini</option>
+    </select>
+ 
+       <p> Gender:
+        <label><input type="radio" name="gender" id="male">Male</label>
+        <label><input type="radio" name="gender" id="female">Female</label>
+        </p>
+        <p><button onclick="a()"class="input" >login</button></p>
+    </div>
     <script>
       function a(){
         var name=document.getElementById("name").value
         var password=document.getElementById("password").value
-      
-        console.log(name,password)
-        
+        var car=document.getElementById("car").value
+        var gmale=document.getElementById("male").checked
+        var gfemale=document.getElementById("female").checked
+            if(gmale==true) var gender="male"
+            else var gender="female"
+       console.log(name,password,car,gender)
         fetch("http://localhost:5000/newData",{
             method:"POST",
             headers:{
                 "Content-Type":"application/json"},
-            body:JSON.stringify({name:name,password:password})
+            body:JSON.stringify({name:name,password:password,car:car,gender:gender })
 
          })
          .then((res)=>{

@@ -13,13 +13,13 @@ app.use(cors())
 
 app.post("/newData",(req,res)=>{
     //console.log(req.body)
-    const {name,password}=req.body
-    console.log(name,password)
+    const {name,password,car,gender}=req.body
+    console.log(name,password,car,gender)
     res.send("added")
 })
 
-app.get("/", (req,res)=>{
+/*app.get("/", (req,res)=>{
  res.send("hi there today is thursday")
-})
+})*/
 
 app.listen(port,()=>console.log("server 5000 is running"))
