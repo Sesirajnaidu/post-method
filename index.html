@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title><style>
+    body {
+        background-image:url("https://www.shutterstock.com/blog/wp-content/uploads/sites/5/2020/02/Usign-Gradients-Featured-Image.jpg");
+        background-repeat:no-repeat;
+        background-size: cover;
+
+    }
+    div{
+        text-align: center;
+        margin: 20%;
+    }
+    h1{
+        text-align:center;
+        font-size:x-large;
+        
+    }
+    .input{border-radius: 25px;
+        border-width:8px;
+        width:40%;
+        padding: 2%;
+
+    }
+</style>
+</head>
+<body>
+    <h1>LOGIN PAGE</h1>
+  <div> 
+    <p> <input type="email" placeholder="Enter your email " id="name" class="input"></p>
+    <p> <input type="password" placeholder="Enter your password" class="input" id="password"></p>
+    <button onclick="a()" >login</button></div>
+    <script>
+      function a(){
+        var name=document.getElementById("name").value
+        var password=document.getElementById("password").value
+      
+        console.log(name,password)
+        
+        fetch("http://localhost:5000/newData",{
+            method:"POST",
+            headers:{
+                "Content-Type":"application/json"},
+            body:JSON.stringify({name:name,password:password})
+
+         })
+         .then((res)=>{
+            console.log(res)
+            if(res.status===200)
+            alert("Registration Successful")
+        })
+        .catch((err)=>{
+            alert(err)
+        })
+    }
+        
+
+      
+    </script>
+</body>
+</html>
